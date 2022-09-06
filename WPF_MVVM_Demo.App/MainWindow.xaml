@@ -15,13 +15,35 @@
         <ResourceDictionary Source="Style.xaml" />
     </Window.Resources>
 
+    <Window.CommandBindings>
+        <CommandBinding Command="Save"
+                        Executed="ExportOnClick"/>
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Control+Alt"
+                    Key="S"
+                    Command="Save"/>
+        <KeyBinding Gesture="Control+Shift+S"
+                    Command="Save"/>
+    </Window.InputBindings>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <ListBox Grid.Column="0"
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <MenuItem Header="_Save"
+                      Command="Save"/>
+        </Menu>
+
+        <ListBox Grid.Row="1" Grid.Column="0"
                  ItemsSource="{Binding Products}"
                  SelectedItem="{Binding Product}"
                  Style="{StaticResource StyleDefault}">
@@ -36,7 +58,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel Grid.Column="1"
+        <StackPanel Grid.Row="1" Grid.Column="1"
                     DataContext="{Binding Product}">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Article"
@@ -62,7 +84,7 @@
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="ButtonExport"
                         Content="Export"
-                        Click="ButtonExport_OnClick" />
+                        Command="Save"/>
             </StackPanel>
         </StackPanel>
     </Grid>

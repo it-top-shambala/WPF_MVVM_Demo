@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace WPF_MVVM_Demo.App;
 
@@ -12,8 +13,9 @@ public partial class MainWindow : Window
         _viewModel = (ViewModel)DataContext;
     }
 
-    private void ButtonExport_OnClick(object sender, RoutedEventArgs e)
+    private void ExportOnClick(object sender, EventArgs e)
     {
         ProductUtility.ExportProducts(_viewModel.Products, "products.json");
+        MessageBox.Show("Saved");
     }
 }
