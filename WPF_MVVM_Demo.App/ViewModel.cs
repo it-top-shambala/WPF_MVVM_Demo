@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
 
 namespace WPF_MVVM_Demo.App;
 
@@ -8,7 +10,6 @@ public class ViewModel : INotifyPropertyChanged
     public ObservableCollection<Product> Products { get; set; }
 
     private Product _product;
-
     public Product Product
     {
         get => _product;
@@ -24,8 +25,11 @@ public class ViewModel : INotifyPropertyChanged
         }
     }
 
+    public ExportProductsCommand ExportProductsCommand { get; }
+
     public ViewModel()
     {
+        ExportProductsCommand = new ExportProductsCommand();
         Products = new ObservableCollection<Product>(ProductUtility.ImportProducts("products.json"));
     }
 

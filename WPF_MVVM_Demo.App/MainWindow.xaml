@@ -15,19 +15,14 @@
         <ResourceDictionary Source="Style.xaml" />
     </Window.Resources>
 
-    <Window.CommandBindings>
-        <CommandBinding Command="Save"
-                        Executed="ExportOnClick"/>
-        <CommandBinding Command="Open"
-                        Executed="ImportOnClick"/>
-    </Window.CommandBindings>
-
     <Window.InputBindings>
         <KeyBinding Modifiers="Control+Alt"
                     Key="S"
-                    Command="Save"/>
+                    Command="{Binding ExportProductsCommand}"
+                    CommandParameter="{Binding Products}"/>
         <KeyBinding Gesture="Control+Shift+S"
-                    Command="Save"/>
+                    Command="{Binding ExportProductsCommand}"
+                    CommandParameter="{Binding Products}"/>
     </Window.InputBindings>
 
     <Grid>
@@ -42,7 +37,8 @@
 
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <MenuItem Header="_Save"
-                      Command="Save"/>
+                      Command="{Binding ExportProductsCommand}"
+                      CommandParameter="{Binding Products}"/>
         </Menu>
 
         <ListBox Grid.Row="1" Grid.Column="0"
@@ -60,23 +56,25 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel Grid.Row="1" Grid.Column="1"
-                    DataContext="{Binding Product}">
-            <StackPanel Orientation="Horizontal">
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <StackPanel Orientation="Horizontal"
+                        DataContext="{Binding Product}">
                 <Label Content="Article"
                        Style="{StaticResource StyleLabel}" />
                 <TextBox Text="{Binding Article}"
                          Style="{StaticResource StyleInput}" />
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        DataContext="{Binding Product}">
                 <Label Content="Name"
                        Style="{StaticResource StyleLabel}" />
                 <TextBox Text="{Binding Name}"
                          Style="{StaticResource StyleInput}" />
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        DataContext="{Binding Product}">
                 <Label Content="Price"
                        Style="{StaticResource StyleLabel}" />
                 <TextBox Text="{Binding Price}"
@@ -86,7 +84,8 @@
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="ButtonExport"
                         Content="Export"
-                        Command="Save"/>
+                        Command="{Binding ExportProductsCommand}"
+                        CommandParameter="{Binding Products}"/>
             </StackPanel>
         </StackPanel>
     </Grid>
