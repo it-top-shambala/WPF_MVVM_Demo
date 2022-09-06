@@ -18,4 +18,9 @@ public partial class MainWindow : Window
         ProductUtility.ExportProducts(_viewModel.Products, "products.json");
         MessageBox.Show("Saved");
     }
+
+    private void ImportOnClick(object sender, EventArgs e)
+    {
+        MessageBox.Show("Import");
+    }
 }

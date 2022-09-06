@@ -18,6 +18,8 @@
     <Window.CommandBindings>
         <CommandBinding Command="Save"
                         Executed="ExportOnClick"/>
+        <CommandBinding Command="Open"
+                        Executed="ImportOnClick"/>
     </Window.CommandBindings>
 
     <Window.InputBindings>
