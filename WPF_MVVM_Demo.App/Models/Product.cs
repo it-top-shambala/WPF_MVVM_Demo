@@ -1,4 +1,4 @@
-﻿namespace WPF_MVVM_Demo.App;
+﻿namespace WPF_MVVM_Demo.App.Models;
 
 public class Product
 {

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.Json;
 
-namespace WPF_MVVM_Demo.App;
+namespace WPF_MVVM_Demo.App.Models;
 
 public static class ProductUtility
 {

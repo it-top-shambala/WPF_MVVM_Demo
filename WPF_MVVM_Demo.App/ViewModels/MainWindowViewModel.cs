@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows;
+using WPF_MVVM_Demo.App.Commands;
+using WPF_MVVM_Demo.App.Models;
 
-namespace WPF_MVVM_Demo.App;
+namespace WPF_MVVM_Demo.App.ViewModels;
 
-public class ViewModel : INotifyPropertyChanged
+public class MainWindowViewModel : INotifyPropertyChanged
 {
     public ObservableCollection<Product> Products { get; set; }
 
     private Product _product;
+
     public Product Product
     {
         get => _product;
@@ -26,11 +27,19 @@ public class ViewModel : INotifyPropertyChanged
     }
 
     public ExportProductsCommand ExportProductsCommand { get; }
+    public ProductsCommand DeleteProductCommand { get; }
 
-    public ViewModel()
+    public MainWindowViewModel()
     {
-        ExportProductsCommand = new ExportProductsCommand();
         Products = new ObservableCollection<Product>(ProductUtility.ImportProducts("products.json"));
+
+        DeleteProductCommand = new ProductsCommand(_ =>
+        {
+            Products.Remove(Product);
+        },
+            o => (o as ObservableCollection<Product>)?.Count != 0);
+
+        ExportProductsCommand = new ExportProductsCommand();
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;

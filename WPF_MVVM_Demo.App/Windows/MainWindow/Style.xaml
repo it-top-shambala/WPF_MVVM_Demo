@@ -14,4 +14,18 @@
            BasedOn="{StaticResource StyleDefault}">
         <Setter Property="Width" Value="300" />
     </Style>
+
+    <Style x:Key="StyleButtonDefault" TargetType="{x:Type Button}"
+           BasedOn="{StaticResource StyleDefault}">
+        <Setter Property="Width" Value="75"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+    <Style x:Key="StyleButtonExport" TargetType="{x:Type Button}"
+           BasedOn="{StaticResource StyleButtonDefault}">
+        <Setter Property="Background" Value="Blue"/>
+    </Style>
+    <Style x:Key="StyleButtonDel" TargetType="{x:Type Button}"
+           BasedOn="{StaticResource StyleButtonDefault}">
+        <Setter Property="Background" Value="Red"/>
+    </Style>
 </ResourceDictionary>

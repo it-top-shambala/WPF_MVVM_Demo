@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WPF_MVVM_Demo.App;
+namespace WPF_MVVM_Demo.App.Windows.MainWindow;
 
 public partial class MainWindow : Window
 {
